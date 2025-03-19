@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Saketh Portfolio</title>
+    <style>
+        body {
+            background-image: url("./public/background.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center center;
+            margin: 0;
+            padding: 0;
+            font-family: "Open Sans", sans-serif;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            margin: 0 auto;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 9999;
+        }
+        nav a {
+            text-decoration: none;
+            color: #f5fffa;
+            margin-left: 30px;
+            font-size: 1.5em;
+            font-family: "Open Sans", sans-serif;
+            font-weight: 600;
+            position: relative;
+            display: inline-block;
+        }
+        nav a::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 2px;
+            display: block;
+            margin-top: 5px;
+            right: 0;
+            background: #ffe4e1;
+            transition: width 0.3s ease, right 0.3s ease;
+        }
+        nav a:hover::after {
+            width: 100%;
+            left: 0;
+            right: auto;
+        }
+        .hamburger {
+            display: none;
+        }
+        #intro {
+            margin-top: 10%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: left;
+            font-size: 2em;
+        }
+        #intro h1 {
+            color: #fcf8f3;
+            font-family: "Ubuntu", sans-serif;
+        }
+        #name {
+            color: #55ad9b;
+            text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5);
+        }
+        .profession {
+            color: #55ad9b;
+            font-family: "Freeman", sans-serif;
+            font-size: 1.25em;
+            margin-top: 10px;
+            height: 1.5em;
+            overflow: hidden;
+            position: relative;
+            white-space: nowrap;
+        }
+        .profession span {
+            position: absolute;
+            animation: slide 12s infinite;
+            opacity: 0;
+        }
+        .profession span:nth-child(1) {
+            animation-delay: 0s;
+        }
+        .profession span:nth-child(2) {
+            animation-delay: 4s;
+        }
+        .profession span:nth-child(3) {
+            animation-delay: 8s;
+        }
+        @keyframes slide {
+            0% {
+                opacity: 0;
+                transform: translateY(100%);
+            }
+            10% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            30% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            40% {
+                opacity: 0;
+                transform: translateY(-100%);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100%);
+            }
+        }
+        #left {
+            margin-left: 50px;
+            flex: 1;
+            padding: 20px;
+        }
+        #right {
+            flex: 1;
+            padding: 20px;
+        }
+        #intro2 {
+            margin-top: 10%;
+        }
+        #head {
+            color: #EEEEEE;
+            font-family: "Ubuntu", sans-serif;
+            font-size: 4em;
+            font-weight: bold;
+            margin-left: 5%;
+        }
+        #para {
+            margin-left: 5%;
+            font-family: "Edu AU VIC WA NT Hand", cursive;
+            font-size: 1.5em;
+            color: #EEEEEE;
+            text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5);
+        }
+        #footer {
+            margin-top: 5%;
+        }
+        #footer h2 {
+            margin-left: 45%;
+            color: #EEF7FF;
+            font-size: 1.5em;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .social-links a {
+            text-decoration: none;
+            display: inline-block;
+        }
+        .social-links img {
+            width: 50px;
+            height: 50px;
+            transition: transform 0.3s ease;
+        }
+        .social-links img:hover {
+            transform: scale(1.1);
+        }
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+                position: fixed;
+                top: 0;
+                right: -250px;
+                width: 250px;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.8);
+                padding-top: 50px;
+                transition: right 0.3s ease;
+                z-index: 999;
+            }
+            nav.open {
+                right: 0;
+            }
+            nav a {
+                color: #fff;
+                font-size: 1.2em;
+                margin: 20px 0;
+                padding-left: 20px;
+                width: 100%;
+                text-align: left;
+            }
+            .hamburger {
+                display: block;
+                position: absolute;
+                top: 10px;
+                right: 20px;
+                width: 30px;
+                height: 30px;
+                cursor: pointer;
+                z-index: 1000;
+            }
+            .hamburger div {
+                width: 100%;
+                height: 4px;
+                background-color: #fff;
+                margin: 5px 0;
+                transition: all 0.3s ease;
+            }
+            .hamburger.open div:nth-child(1) {
+                transform: rotate(45deg) translateY(10px);
+            }
+            .hamburger.open div:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger.open div:nth-child(3) {
+                transform: rotate(-45deg) translateY(-10px);
+            }
+            #intro {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 20px;
+                margin-top: 70px;
+            }
+            #left, #right {
+                margin: 0;
+                padding: 0;
+            }
+            #right img {
+                margin: 0 auto;
+                width: 200px;
+                height: auto;
+            }
+            #head {
+                font-size: 2em;
+                margin: 0;
+            }
+            #para {
+                font-size: 1.2em;
+                margin: 0;
+            }
+            .profession {
+                font-size: 1em;
+            }
+            #footer {
+                margin-top: 30px;
+                text-align: center;
+            }
+            #footer h2 {
+                font-size: 1.2em;
+            }
+            .social-links {
+                justify-content: center;
+                gap: 10px;
+            }
+            .social-links img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&family=Freeman&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playwrite+AR:wght@100..400&family=Quicksand:wght@300..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet" />
+</head>
+<body>
+    <div class="hamburger" onclick="toggleNav()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <nav>
+        <a href="/home.html">🏠︎ Home</a>
+        <a href="/about.html">👤 About</a>
+        <a href="/projects.html">🌐 Projects</a>
+        <a href="/resume.html">📄 Resume</a>
+    </nav>
+    <div id="intro">
+        <div id="left">
+            <h1>Hello!!</h1>
+            <h1>I am <span id="name">Saketh Pinumalla</span></h1>
+            <div class="profession">
+                <span>SOFTWARE DEVELOPER</span>
+                <span>FULL STACK DEVELOPER</span>
+                <span>ML ENGINEER</span>
+            </div>
+        </div>
+        <div id="right">
+            <img src="./public/avataaars.png" width="300px" height="300px" style="margin-left: 200px;">
+        </div>
+    </div>
+    <div id="intro2">
+        <pre id="head">A  Bit  <span style="color: #55ad9b;"> About </span>  Me</pre>
+        <pre id="para">
+           -> An ambitious IT student driven by an insatiable curiosity for cutting-edge technology.
+
+           -> My academic journey has fortified my proficiency in pivotal programming
+            languages like C++ , Python and Java
+           
+            -> I have fervently engaged in projects aimed at enhancing customer
+            experiences and catalyzing organizational growth
+        </pre>
+    </div>
+    <div id="footer">
+        <h2>FIND ME ON</h2>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/saketh-pinumalla-2b764b25b" target="_blank" aria-label="LinkedIn">
+                <img src="./public/linkedin.png" alt="LinkedIn">
+            </a>
+            <a href="https://www.instagram.com/saketh_pinumalla" target="_blank" aria-label="Instagram">
+                <img src="./public/instagram.png" alt="Instagram">
+            </a>
+            <a href="https://www.twitter.com/IamSakethP" target="_blank" aria-label="Twitter">
+                <img src="./public/twitter.png" alt="Twitter">
+            </a>
+        </div>
+    </div>
+    <script>
+        function toggleNav() {
+            const nav = document.querySelector('nav');
+            const hamburger = document.querySelector('.hamburger');
+            nav.classList.toggle('open');
+            hamburger.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>

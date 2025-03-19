@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Saketh Portfolio</title>
+    <style>
+      body {
+        background-image: url("./public/background.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center center;
+        margin: 0;
+        padding: 0;
+      }
+      nav {
+        margin-top: 2%;
+        margin-left: 58%;
+      }
+      a {
+        text-decoration: none;
+        color: #f5fffa;
+        margin-left: 30px;
+        font-size: 1.5em;
+        font-family: "Open Sans", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 600;
+        position: relative;
+        display: inline-block;
+      }
+      a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        display: block;
+        margin-top: 5px;
+        right: 0;
+        background: #ffe4e1;
+        transition: width 0.3s ease, right 0.3s ease;
+      }
+      a:hover::after {
+        width: 100%;
+        left: 0;
+        right: auto;
+      }
+      #left {
+        max-width: 60%;
+      }
+      #left h1 {
+        margin-left: 25%;
+        color: #fcf8f3;
+        font-family: "Ubuntu", sans-serif;
+        font-size: 2.5em;
+        margin-top: 10%;
+      }
+      #left h3 {
+        margin-left: 25%;
+        font-family: "Ubuntu", sans-serif;
+        font-size: 2em;
+      }
+      h2 {
+        margin-left: 15%;
+        color: #fcf8f3;
+        font-family: "Quicksand", sans-serif;
+      }
+      #right {
+        max-width: 25%;
+      }
+      #skills {
+        width: 75%;
+        margin: 0 auto;
+        background-color: white;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        border-radius: 8px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+      #skills img {
+        margin: 10px;
+        border: 1px solid black;
+        padding: 20px;
+      }
+      #skills img:hover {
+        transform: scale(1.1);
+        transition: 0.5s ease;
+      }
+      
+      .container {
+    max-width: 75%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.course {
+    margin-top: 30px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.course h3 {
+    font-size: 1.75em;
+    color: #55AD9B;
+}
+
+.course p {
+    font-size: 1em;
+    line-height: 1.5;
+    color: #666;
+}
+
+.course ul {
+    margin-top: 10px;
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.course ul li {
+    margin-bottom: 10px;
+}
+
+.course:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.course:hover h3 {
+    color: #333;
+}
+
+.course:hover p,
+.course:hover ul li {
+    color: #333;
+}
+/* Base styles for nav */
+nav {
+    display: flex;
+    justify-content: center; /* Center navigation links */
+    margin: 0 auto;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 9999;
+}
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+        position: fixed;
+        top: 0;
+        right: -250px;
+        width: 250px;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        padding-top: 50px;
+        transition: right 0.3s ease;
+        z-index: 999; /* Ensures it stays above other content */
+    }
+
+    nav.open {
+        right: 0;
+    }
+
+    nav a {
+        color: #fff;
+        font-size: 1.2em;
+        margin: 20px 0;
+        padding-left: 20px;
+        width: 100%;
+        text-align: left;
+    }
+
+    /* Hamburger menu styles */
+    .hamburger {
+        display: block;
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        z-index: 1000;
+    }
+
+    .hamburger div {
+        width: 100%;
+        height: 4px;
+        background-color: #fff;
+        margin: 5px 0;
+        transition: all 0.3s ease;
+    }
+
+    /* Change hamburger menu to 'X' when open */
+    .hamburger.open div:nth-child(1) {
+        transform: rotate(45deg) translateY(10px);
+    }
+
+    .hamburger.open div:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.open div:nth-child(3) {
+        transform: rotate(-45deg) translateY(-10px);
+    }
+}
+@media (max-width: 768px) {
+    #left {
+        max-width: 100%;
+        padding: 10px;
+        text-align: center;
+    }
+
+    #left h1, #left h3, h2 {
+        margin-left: 0;
+        font-size: 1.5em;
+    }
+
+    #right {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    #right img {
+        width: 80%;
+        height: auto;
+        margin-top: 20px;
+    }
+
+    ul {
+        padding: 0;
+        text-align: center;
+    }
+
+    ul li {
+        font-size: 1.2em;
+    }
+}
+@media (max-width: 768px) {
+    #skills, .container {
+        width: 90%;
+        padding: 15px;
+    }
+
+    #skills img {
+        width: 50px;
+        height: 50px;
+        margin: 5px;
+    }
+
+    .container h2 {
+        font-size: 1.5em;
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .course {
+        padding: 10px;
+    }
+
+    .course h3 {
+        font-size: 1.2em;
+    }
+
+    .course p, .course ul {
+        font-size: 0.9em;
+    }
+}
+@media (max-width: 768px) {
+    #skills, .container {
+        width: 90%;
+        padding: 15px;
+    }
+
+    #skills img {
+        width: 50px;
+        height: 50px;
+        margin: 5px;
+    }
+
+    .container h2 {
+        font-size: 1.5em;
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .course {
+        padding: 10px;
+    }
+
+    .course h3 {
+        font-size: 1.2em;
+    }
+
+    .course p, .course ul {
+        font-size: 0.9em;
+    }
+}
+
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&family=Freeman&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playwrite+AR:wght@100..400&family=Quicksand:wght@300..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="hamburger" onclick="toggleNav()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    
+    <nav>
+        <a href="/home.html">🏠︎ Home</a>
+        <a href="/about.html">👤 About</a>
+        <a href="/projects.html">🌐 Projects</a>
+        <a href="/resume.html">📄 Resume</a>
+    </nav>
+    <div style="display: flex; flex-direction: row">
+      <div id="left">
+        <h1>
+          <span
+            style="color: #55ad9b; text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5)"
+            >ABOUT</span
+          >
+          ME
+        </h1>
+        <h2 style="line-height: 1.5">
+          Hi There, I am
+          <span
+            style="color: #55ad9b; text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5)"
+            >Saketh Pinumalla</span
+          >. I currently live in Hyderabad,India.<br />
+          I am Pursuing Bachelors of Engineering from Vasavi College of
+          Engineering(VCE) in IT.<br />
+          As a Tech Enthusiast I build many projects during my coursework.
+        </h2>
+        <h3
+          style="color: #55ad9b; text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5)"
+        >
+          HOBBIES
+        </h3>
+        <ul
+          style="
+            list-style-type: '\2023';
+            color: #f5fffa;
+            margin-left: 15%;
+            font-size: 2em;
+            font-family: 'Quicksand', sans-serif;
+          "
+        >
+          <li style="margin-bottom: 10px">Playing Cricket</li>
+          <li style="margin-bottom: 10px">Watching Movies</li>
+          <li>Reading News</li>
+        </ul>
+      </div>
+      <div id="right">
+        <img
+          src="./public/work1.png"
+          width="450px"
+          height="450px"
+          style="margin-top: 10%"
+        />
+      </div>
+    </div>
+    <div>
+      <h2 style="font-size: 3em; margin-left: 33%">
+        Professional
+        <span
+          style="color: #55ad9b; text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5)"
+          >Skills</span
+        >
+      </h2>
+      <div id="skills">
+        <img src="./public/c-.png" width="75px" height="75px" />
+        <img src="./public/python.png" width="75px" height="75px" />
+        <img src="./public/java.png" width="75px" height="75px" />
+        <img src="./public/nodejs.png" width="75px" height="75px" />
+        <img src="./public/html.png" width="75px" height="75px" />
+        <img src="./public/js.png" width="75px" height="75px" />
+        <img src="./public/postgre.png" width="75px" height="75px" />
+        <img src="./public/atom.png" width="75px" height="75px" />
+      </div>
+    </div>
+
+    <div class="container">
+      <h2 style="color: #000; margin-left: 35%;">Courses I Learnt</h2>
+      <div class="course">
+        <h3>Full Stack Web Development by Angela Yu on Udemy</h3>
+        <p>
+          I completed the Full Stack Web Development course by Angela Yu, which
+          provided me with a comprehensive understanding of both front-end and
+          back-end development. The course covered:
+        </p>
+        <ul>
+          <li>
+            HTML, CSS, and JavaScript: Core web technologies for building
+            interactive and responsive web pages.
+          </li>
+          <li>
+            Node.js and Express.js: Server-side development and API creation.
+          </li>
+          <li>MongoDB: Database management and integration.</li>
+          <li>
+            React.js: Building dynamic user interfaces and single-page
+            applications.
+          </li>
+          <li>
+            Version Control with Git and GitHub: Collaborating on projects and
+            maintaining code versions.
+          </li>
+        </ul>
+        
+      </div>
+
+      <div class="course">
+        <h3>Machine Learning A-Z by Kirill Eremenko on Udemy</h3>
+        <p>
+          The Machine Learning A-Z course by Kirill Eremenko was a deep dive
+          into the world of machine learning and artificial intelligence. The
+          course covered:
+        </p>
+        <ul>
+          <li>Data Preprocessing: Cleaning and preparing data for analysis.</li>
+          <li>
+            Regression Techniques: Simple Linear Regression, Multiple Linear
+            Regression, and Polynomial Regression.
+          </li>
+          <li>
+            Classification Algorithms: Logistic Regression, K-Nearest Neighbors,
+            Support Vector Machine, and Decision Trees.
+          </li>
+          <li>Clustering: K-Means Clustering and Hierarchical Clustering.</li>
+          <li>Association Rule Learning: Apriori and Eclat algorithms.</li>
+          <li>
+            Reinforcement Learning: Upper Confidence Bound and Thompson
+            Sampling.
+          </li>
+          <li>
+            Natural Language Processing: Text classification and sentiment
+            analysis.
+          </li>
+          <li>
+            Deep Learning: Artificial Neural Networks and Convolutional Neural
+            Networks.
+          </li>
+          <li>
+            Model Selection and Boosting: Techniques to improve model
+            performance.
+          </li>
+        </ul>
+        
+      </div>
+
+      <div class="course">
+        <h3>Prompt Engineering by Julian Melanson</h3>
+        <p>
+          The Prompt Engineering course by Julian Melanson introduced me to the
+          cutting-edge techniques of working with AI language models. The course
+          covered:
+        </p>
+        <ul>
+          <li>
+            Understanding AI Models: Basics of how AI language models work and
+            their applications.
+          </li>
+          <li>
+            Crafting Effective Prompts: Techniques to design prompts that elicit
+            the desired responses from AI models.
+          </li>
+          <li>
+            Fine-Tuning Models: Adapting pre-trained models for specific tasks.
+          </li>
+          <li>
+            Ethical Considerations: Ensuring responsible and ethical use of AI
+            technologies.
+          </li>
+          <li>
+            Real-World Applications: Using prompt engineering in chatbots,
+            content generation, and automated customer support.
+          </li>
+        </ul>
+        
+      </div>
+    </div>
+    <script>
+        function toggleNav() {
+            const nav = document.querySelector('nav');
+            const hamburger = document.querySelector('.hamburger');
+            nav.classList.toggle('open');
+            hamburger.classList.toggle('open');
+        }
+    </script>
+    
+  </body>
+</html>
